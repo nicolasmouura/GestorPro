@@ -1,0 +1,13 @@
+<h1>Excluir Loja</h1>
+
+{% if erro %}
+    <p style="color: red;">{{ erro }}</p>
+{% else %}
+    <p>Tem certeza que deseja excluir a loja: <strong>{{ loja.nome }}</strong>?</p>
+    <form method="post">
+        {% csrf_token %}
+        <button type="submit">Confirmar exclusão</button>
+    </form>
+{% endif %}
+
+<a href="{% url 'lista_lojas' %}">Cancelar</a>

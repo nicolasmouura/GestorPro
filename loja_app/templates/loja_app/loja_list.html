@@ -1,0 +1,12 @@
+<h1>Lista de Lojas</h1>
+<a href="{% url 'cadastrar_loja' %}">Cadastrar nova loja</a>
+<ul>
+    {% for loja in lojas %}
+        <li>
+            {{ loja.nome }} - {{ loja.cnpj_loja }}
+            <a href="{% url 'excluir_loja' loja.id %}">Excluir</a>
+        </li>
+    {% empty %}
+        <li>Nenhuma loja cadastrada.</li>
+    {% endfor %}
+</ul>
