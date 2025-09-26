@@ -1,7 +1,9 @@
-<h1>Cadastrar Loja</h1>
+<h2>{% if form.instance.pk %}Editar Loja{% else %}Cadastrar Loja{% endif %}</h2>
 <form method="post">
     {% csrf_token %}
     {{ form.as_p }}
     <button type="submit">Salvar</button>
 </form>
 <a href="{% url 'lista_lojas' %}">Voltar</a>
+
+

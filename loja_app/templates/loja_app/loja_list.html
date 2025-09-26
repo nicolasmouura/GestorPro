@@ -1,12 +1,40 @@
-<h1>Lista de Lojas</h1>
-<a href="{% url 'cadastrar_loja' %}">Cadastrar nova loja</a>
-<ul>
-    {% for loja in lojas %}
-        <li>
-            {{ loja.nome }} - {{ loja.cnpj_loja }}
-            <a href="{% url 'excluir_loja' loja.id %}">Excluir</a>
-        </li>
-    {% empty %}
-        <li>Nenhuma loja cadastrada.</li>
-    {% endfor %}
-</ul>
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Lista de Lojas</title>
+</head>
+<body>
+    <h1>Lista de Lojas</h1>
+
+    <a href="{% url 'cadastrar_loja' %}">Cadastrar nova loja</a>
+    <br><br>
+
+    {% if lojas %}
+        <table border="1" cellpadding="5">
+            <tr>
+                <th>ID</th>
+                <th>CNPJ</th>
+                <th>Nome</th>
+                <th>Telefone</th>
+                <th>Email</th>
+                <th>Ações</th>
+            </tr>
+            {% for loja in lojas %}
+                <tr>
+                    <td>{{ loja.id }}</td>
+                    <td>{{ loja.cnpj_loja }}</td>
+                    <td>{{ loja.nome }}</td>
+                    <td>{{ loja.telefone }}</td>
+                    <td>{{ loja.email }}</td>
+                    <td>
+                        <a href="{% url 'editar_loja' loja.pk %}">Editar</a>
+                        <a href="{% url 'excluir_loja' loja.id %}">Excluir</a>
+                    </td>
+                </tr>
+            {% endfor %}
+        </table>
+    {% else %}
+        <p>Nenhuma loja cadastrada.</p>
+    {% endif %}
+</body>
+</html>

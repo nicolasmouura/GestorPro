@@ -2,6 +2,7 @@ from django.shortcuts import render
 from django.shortcuts import render, get_object_or_404, redirect
 from .models import Loja
 from .forms import LojaForm 
+from django.shortcuts import get_object_or_404
 
 # Create your views here.
 
@@ -34,4 +35,19 @@ def excluir_loja(request, pk):
             # se houver produtos ou vendas vinculados, mostra mensagem de erro
             return render(request, 'loja_app/loja_confirm_delete.html', {'loja': loja, 'erro': 'Não é possível excluir, existem produtos ou vendas vinculados.'})
     return render(request, 'loja_app/loja_confirm_delete.html', {'loja': loja})
+
+#Função Editar Loja
+def editar_loja(request, pk):
+    loja = get_object_or_404(Loja, pk=pk)  # busca a loja ou dá erro 404
+    if request.method == 'POST':
+        form = LojaForm(request.POST, instance=loja)  # edita a loja existente
+        if form.is_valid():
+            form.save()
+            return redirect('lista_lojas')
+    else:
+        form = LojaForm(instance=loja)  # abre o formulário preenchido com a loja
+    return render(request, 'loja_app/loja_form.html', {'form': form})
+
+
+
 
