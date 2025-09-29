@@ -16,9 +16,13 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path, include
+from loja_app import views
 
 urlpatterns = [
-    path('admin/', admin.site.urls),
-    path('lojas/', include('loja_app.urls')),  # conecta o app loja_app
+    path('', views.home, name='home'),   # rota inicial -> home
+    path('admin/', admin.site.urls),     # admin
+    path('lojas/', include('loja_app.urls')),  # inclui urls do app loja_app
 ]
+
+
 
