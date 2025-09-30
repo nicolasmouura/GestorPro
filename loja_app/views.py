@@ -1,60 +1,47 @@
 from django.shortcuts import render, get_object_or_404, redirect
-from django.http import HttpResponse
 from .models import Loja
 from .forms import LojaForm
 
 
-# ---------------------------
-# Home
-# ---------------------------
 def home(request):
-    return render(request, 'home.html')
+    return render(request, 'loja_app/home.html')
 
 
-# ---------------------------
-# Lojas
-# ---------------------------
-
-# Listar lojas
 def lista_lojas(request):
-    lojas = Loja.objects.all()  # pega todas as lojas do banco
+    lojas = Loja.objects.all()
     return render(request, 'loja_app/loja_list.html', {'lojas': lojas})
 
 
-# Cadastrar loja
 def cadastrar_loja(request):
-    if request.method == 'POST':  # se o formulário foi enviado
-        form = LojaForm(request.POST)  # pega os dados enviados
-        if form.is_valid():  # valida os dados
-            form.save()  # salva no banco
-            return redirect('lista_lojas')  # volta para a lista
-    else:
-        form = LojaForm()  # se for GET, apenas cria o formulário vazio
-    return render(request, 'loja_app/loja_form.html', {'form': form})
-
-
-# Editar loja
-def editar_loja(request, pk):
-    loja = get_object_or_404(Loja, pk=pk)  # busca a loja ou dá erro 404
     if request.method == 'POST':
-        form = LojaForm(request.POST, instance=loja)  # edita a loja existente
+        form = LojaForm(request.POST)
         if form.is_valid():
             form.save()
-            return redirect('lista_lojas')
+            return redirect('listar_lojas')
     else:
-        form = LojaForm(instance=loja)  # abre o formulário preenchido
+        form = LojaForm()
     return render(request, 'loja_app/loja_form.html', {'form': form})
 
 
-# Excluir loja
+def editar_loja(request, pk):
+    loja = get_object_or_404(Loja, pk=pk)
+    if request.method == 'POST':
+        form = LojaForm(request.POST, instance=loja)
+        if form.is_valid():
+            form.save()
+            return redirect('listar_lojas')
+    else:
+        form = LojaForm(instance=loja)
+    return render(request, 'loja_app/loja_form.html', {'form': form})
+
+
 def excluir_loja(request, pk):
-    loja = get_object_or_404(Loja, pk=pk)  # pega a loja pelo id (ou dá erro 404)
-    if request.method == 'POST':  # se o formulário de confirmação foi enviado
+    loja = get_object_or_404(Loja, pk=pk)
+    if request.method == 'POST':
         try:
-            loja.delete()  # tenta excluir a loja
-            return redirect('lista_lojas')  # volta para a lista
+            loja.delete()
+            return redirect('listar_lojas')
         except:
-            # se houver produtos ou vendas vinculados, mostra mensagem de erro
             return render(
                 request,
                 'loja_app/loja_confirm_delete.html',
