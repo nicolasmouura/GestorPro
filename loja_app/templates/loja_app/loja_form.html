@@ -1,17 +1,21 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>{% if form.instance.pk %}Editar Loja{% else %}Cadastrar Loja{% endif %}</title>
+    <title>Formulário Loja</title>
+    {% load static %}
+    <link rel="stylesheet" type="text/css" href="{% static 'loja_app/css/style.css' %}">
 </head>
 <body>
-    <h1>{% if form.instance.pk %}Editar Loja{% else %}Cadastrar Loja{% endif %}</h1>
+    <div class="container">
+        <h1>Formulário da Loja</h1>
 
-    <form method="POST">
-        {% csrf_token %}
-        {{ form.as_p }}
-        <button type="submit">Salvar</button>
-    </form>
+        <form method="post" class="formulario">
+            {% csrf_token %}
+            {{ form.as_p }}
+            <button type="submit" class="botao">Salvar</button>
+        </form>
 
-    <a href="{% url 'listar_lojas' %}">Voltar para lista</a>
+        <a href="{% url 'lista_lojas' %}" class="botao voltar">Voltar</a>
+    </div>
 </body>
 </html>

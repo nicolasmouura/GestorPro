@@ -1,12 +1,15 @@
+{% load static %}
 <!DOCTYPE html>
 <html>
 <head>
     <title>Lista de Lojas</title>
+    <link rel="stylesheet" href="{% static 'loja_app/style.css' %}">
 </head>
 <body>
     <h1>Lista de Lojas</h1>
 
-    <a href="{% url 'cadastrar_loja' %}">Cadastrar nova loja</a>
+    <a href="{% url 'cadastrar_loja' %}" class="botao">Cadastrar Nova Loja</a>
+
     <br><br>
 
     {% if lojas %}
