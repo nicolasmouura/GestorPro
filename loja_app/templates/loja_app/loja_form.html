@@ -1,21 +1,19 @@
 <!DOCTYPE html>
-<html>
+<html lang="pt-br">
 <head>
-    <title>Formulário Loja</title>
-    {% load static %}
-    <link rel="stylesheet" type="text/css" href="{% static 'loja_app/css/style.css' %}">
+    <meta charset="UTF-8">
+    <title>Formulário da Loja</title>
 </head>
 <body>
-    <div class="container">
-        <h1>Formulário da Loja</h1>
+    <h1>Formulário da Loja</h1>
 
-        <form method="post" class="formulario">
-            {% csrf_token %}
-            {{ form.as_p }}
-            <button type="submit" class="botao">Salvar</button>
-        </form>
+    <form method="post">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit">Salvar</button>
+    </form>
 
-        <a href="{% url 'lista_lojas' %}" class="botao voltar">Voltar</a>
-    </div>
+    <a href="{% url 'listar_lojas' %}">Voltar</a>
 </body>
 </html>
+

@@ -7,11 +7,12 @@ def home(request):
     return render(request, 'loja_app/home.html')
 
 
-def lista_lojas(request):
+# Listar lojas
+def listar_lojas(request):
     lojas = Loja.objects.all()
     return render(request, 'loja_app/loja_list.html', {'lojas': lojas})
 
-
+# Cadastrar nova loja
 def cadastrar_loja(request):
     if request.method == 'POST':
         form = LojaForm(request.POST)
@@ -22,7 +23,7 @@ def cadastrar_loja(request):
         form = LojaForm()
     return render(request, 'loja_app/loja_form.html', {'form': form})
 
-
+# Editar loja
 def editar_loja(request, pk):
     loja = get_object_or_404(Loja, pk=pk)
     if request.method == 'POST':
@@ -34,17 +35,11 @@ def editar_loja(request, pk):
         form = LojaForm(instance=loja)
     return render(request, 'loja_app/loja_form.html', {'form': form})
 
-
+# Excluir loja
 def excluir_loja(request, pk):
     loja = get_object_or_404(Loja, pk=pk)
     if request.method == 'POST':
-        try:
-            loja.delete()
-            return redirect('listar_lojas')
-        except:
-            return render(
-                request,
-                'loja_app/loja_confirm_delete.html',
-                {'loja': loja, 'erro': 'Não é possível excluir, existem produtos ou vendas vinculados.'}
-            )
+        loja.delete()
+        return redirect('listar_lojas')
     return render(request, 'loja_app/loja_confirm_delete.html', {'loja': loja})
+

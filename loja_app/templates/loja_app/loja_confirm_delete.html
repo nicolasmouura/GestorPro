@@ -1,19 +1,19 @@
-
 <!DOCTYPE html>
-<html>
+<html lang="pt-br">
 <head>
+    <meta charset="UTF-8">
     <title>Excluir Loja</title>
 </head>
 <body>
     <h1>Excluir Loja</h1>
-    <p>Tem certeza que deseja excluir {{ loja.nome }}?</p>
-    {% if erro %}
-        <p style="color:red">{{ erro }}</p>
-    {% endif %}
+    <p>Tem certeza que deseja excluir a loja "{{ loja.nome }}"?</p>
+
     <form method="post">
         {% csrf_token %}
-        <button type="submit">Confirmar exclusão</button>
+        <button type="submit">Confirmar</button>
     </form>
+
     <a href="{% url 'listar_lojas' %}">Cancelar</a>
 </body>
 </html>
+
