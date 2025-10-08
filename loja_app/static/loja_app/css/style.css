@@ -1,81 +1,13 @@
 /* =======================================
-   RESET BÁSICO
+   VARIÁVEIS CSS
 ======================================= */
-body {
-    margin: 0;
-    padding: 0;
-    font-family: Arial, Helvetica, sans-serif;
-    background-color: #f4f6f9;
-    color: #333;
-}
-
-/* =======================================
-   CABEÇALHO
-======================================= */
-h1 {
-    text-align: center;
-    margin: 20px 0;
-    color: #2c3e50;
-}
-
-/* =======================================
-   LINKS
-======================================= */
-a {
-    text-decoration: none;
-    color: #3498db;
-    font-weight: bold;
-    margin: 0 5px;
-}
-
-a:hover {
-    color: #1abc9c;
-}
-
-/* =======================================
-   LISTA DE LOJAS
-======================================= */
-ul {
-    list-style: none;
-    padding: 0;
-    max-width: 600px;
-    margin: 20px auto;
-}
-
-li {
-    background: #fff;
-    margin: 10px 0;
-    padding: 15px;
-    border-radius: 8px;
-    box-shadow: 0px 2px 5px rgba(0,0,0,0.1);
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-}
-
-/* Botão cadastrar (na lista) */
-a.botao {
-    display: inline-block;
-    background: #3498db;
-    color: #fff !important;
-    padding: 10px 15px;
-    border-radius: 5px;
-    transition: background 0.3s;
-    margin: 10px auto;
-}
-
-a.botao:hover {
-    background: #2980b9;
-}
-
-/* =======================================
-   FORMULÁRIOS
-======================================= */
-form {
-    max-width: 500px;
-    margin: 20px auto;
-    background: #fff;
-    padding: 20px;
-    border-radius: 8px;
-    box-shadow: 0px 2px
+:root {
+    --cor-fundo: #f4f6f9;
+    --cor-primaria: #3498db;
+    --cor-primaria-dark: #2980b9;
+    --cor-hover: #1abc9c;
+    --cor-texto: #333;
+    --cor-cabecalho: #2c3e50;
+    --cor-card: #ffffff;
+    --sombra-leve: 0 2px 5px rgba(0, 0, 0, 0.1);
 }

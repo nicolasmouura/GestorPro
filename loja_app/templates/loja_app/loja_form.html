@@ -7,14 +7,21 @@
     <link rel="stylesheet" href="{% static 'loja_app/css/style.css' %}">
 </head>
 <body>
-    <h1>Formulário da Loja</h1>
-    <form method="post">
-        {% csrf_token %}
-        {{ form.as_p }}
-        <button type="submit" class="botao">Salvar</button>
-    </form>
-    <a href="{% url 'lista_lojas' %}" class="botao">Voltar</a>
+    <div class="container">
+        <h1>{% if form.instance.pk %}Editar Loja{% else %}Cadastrar Loja{% endif %}</h1>
+        
+        <form method="post" class="formulario">
+            {% csrf_token %}
+            {{ form.as_p }}
+            <button type="submit" class="botao">Salvar</button>
+        </form>
+
+        <div class="acoes">
+            <a href="{% url 'lista_lojas' %}" class="botao">Voltar</a>
+        </div>
+    </div>
 </body>
 </html>
+
 
 
