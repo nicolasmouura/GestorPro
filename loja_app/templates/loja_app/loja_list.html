@@ -1,22 +1,28 @@
+{% load static %}
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
     <meta charset="UTF-8">
     <title>Lista de Lojas</title>
+    <link rel="stylesheet" href="{% static 'loja_app/css/style.css' %}">
 </head>
 <body>
     <h1>Lista de Lojas</h1>
-    <a href="{% url 'cadastrar_loja' %}">Cadastrar Nova Loja</a>
+    <a href="{% url 'cadastrar_loja' %}" class="botao">Cadastrar Nova Loja</a>
+
     <ul>
         {% for loja in lojas %}
             <li>
                 {{ loja.nome }}
-                <a href="{% url 'editar_loja' loja.id %}">Editar</a>
-                <a href="{% url 'excluir_loja' loja.id %}">Excluir</a>
+                <a href="{% url 'editar_loja' loja.id %}" class="botao">Editar</a>
+                <a href="{% url 'excluir_loja' loja.id %}" class="botao">Excluir</a>
             </li>
         {% empty %}
             <li>Nenhuma loja cadastrada.</li>
         {% endfor %}
     </ul>
+
+    <a href="{% url 'home' %}" class="botao">Voltar</a>
 </body>
 </html>
+
