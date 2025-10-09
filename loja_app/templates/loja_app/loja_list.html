@@ -1,16 +1,17 @@
+{% extends 'loja_app/base.html' %}
 {% load static %}
-<!DOCTYPE html>
-<html lang="pt-br">
-<head>
-    <meta charset="UTF-8">
-    <title>Lista de Lojas</title>
-    <link rel="stylesheet" href="{% static 'loja_app/css/style.css' %}">
-</head>
-<body>
-    <h1>Lista de Lojas</h1>
+
+{% block title %}Lista de Lojas{% endblock %}
+
+{% block extra_css %}
+    <link rel="stylesheet" href="{% static 'loja_app/css/loja_list.css' %}">
+{% endblock %}
+
+{% block content %}
+    <h2 class="titulo-lista">Lista de Lojas</h2>
     <a href="{% url 'cadastrar_loja' %}" class="botao">Cadastrar Nova Loja</a>
 
-    <ul>
+    <ul class="lista-lojas">
         {% for loja in lojas %}
             <li>
                 {{ loja.nome }}
@@ -21,8 +22,7 @@
             <li>Nenhuma loja cadastrada.</li>
         {% endfor %}
     </ul>
+{% endblock %}
 
-    <a href="{% url 'home' %}" class="botao">Voltar</a>
-</body>
-</html>
+
 

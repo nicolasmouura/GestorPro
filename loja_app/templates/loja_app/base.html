@@ -1,0 +1,31 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}GestorPro{% endblock %}</title>
+    <link rel="stylesheet" href="{% static 'loja_app/css/base.css' %}">
+    {% block extra_css %}{% endblock %}
+</head>
+<body>
+    <header>
+        <h1>GestorPro</h1>
+        <nav>
+            <a href="{% url 'home' %}">🏠 Início</a>
+            <a href="{% url 'lista_lojas' %}">📄 Ver Lojas</a>
+            <a href="/admin/">⚙️ Administração</a>
+        </nav>
+    </header>
+
+    <main>
+        {% block content %}
+        <!-- Conteúdo principal -->
+        {% endblock %}
+    </main>
+
+    <footer>
+        <p>&copy; 2025 - GestorPro</p>
+    </footer>
+</body>
+</html>

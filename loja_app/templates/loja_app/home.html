@@ -1,17 +1,13 @@
+{% extends 'loja_app/base.html' %}
 {% load static %}
-<!DOCTYPE html>
-<html lang="pt-br">
-<head>
-    <meta charset="UTF-8">
-    <title>GestorPro - Início</title>
-    <link rel="stylesheet" href="{% static 'loja_app/css/style.css' %}">
-</head>
-<body>
-    <h1>Bem-vindo ao GestorPro!</h1>
-    <p>Escolha uma opção:</p>
-    <ul>
-        <li><a href="{% url 'lista_lojas' %}">📄 Ver Lojas</a></li>
-        <li><a href="/admin/">⚙️ Administração</a></li>
-    </ul>
-</body>
-</html>
+
+{% block title %}Início - GestorPro{% endblock %}
+
+{% block extra_css %}
+    <link rel="stylesheet" href="{% static 'loja_app/css/home.css' %}">
+{% endblock %}
+
+{% block content %}
+    <h2 class="home-titulo">Bem-vindo ao GestorPro!</h2>
+    <p class="home-paragrafo">Escolha uma opção no menu acima.</p>
+{% endblock %}
